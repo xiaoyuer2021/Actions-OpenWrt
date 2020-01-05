@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build OpenWrt
+name: Build OpenWrt R6220-LGA1150
 
 on: 
   release:
@@ -15,7 +15,7 @@ on:
     branches: 
       - master
     paths:
-      - '.config'
+      - 'R6220-LGA1150.config'
 #  schedule:
 #    - cron: 0 8 * * 5
 #  watch:
@@ -48,8 +48,8 @@ jobs:
 
     - name: Clone source code
       env: 
-        REPO_URL: https://github.com/coolsnowwolf/lede
-        REPO_BRANCH: master
+        REPO_URL: https://github.com/LGA1150/openwrt
+        REPO_BRANCH: exp
       run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
 
     - name: Update feeds
@@ -60,7 +60,7 @@ jobs:
 
     - name: Load custom configuration
       env:
-        CONFIG_FILE: '.config'
+        CONFIG_FILE: 'R6220-LGA1150.config'
         DIY_SH: 'diy.sh'
       run: |
         [ -e files ] && mv files openwrt/files
@@ -70,8 +70,8 @@ jobs:
         ../$DIY_SH
         make defconfig
 
-    - name: SSH connection to Actions
-      uses: P3TERX/debugger-action@master
+#    - name: SSH connection to Actions
+#      uses: P3TERX/debugger-action@master
 
     - name: Download package
       run: |
