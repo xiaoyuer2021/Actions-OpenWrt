@@ -11,7 +11,7 @@ Build OpenWrt using GitHub Actions
 [参考](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
 
 ## 包括的固件
-- Netgear R6220 with Lean
+- X86_64 with Lean
 - 竞斗云2.0（p2w R619AC 128M) with Lean
 
 ## Usage
